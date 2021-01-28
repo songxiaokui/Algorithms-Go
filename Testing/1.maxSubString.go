@@ -26,7 +26,7 @@ func lengthOfLongestSubStringBitMap(x string) (int, int, int, string) {
 	}
 	// 定义两个指针left right 和最大值
 	var bitMap [128]bool
-	var left, right, max = 0, 0, 0
+	var left, right, max, s, e = 0, 0, 0, 0, 0
 	for right < len(x) {
 		// 如果右指针为true,说明存在该点，置为false，并且左指针++
 		if bitMap[x[right]] {
@@ -39,12 +39,13 @@ func lengthOfLongestSubStringBitMap(x string) (int, int, int, string) {
 		// 修改max数值
 		if max < right-left {
 			max = right - left
+			s = left
+			e = right
 		}
 		// 判断是否是越界
 		if right >= len(x) || left+max >= len(x) {
-			left = right - max
 			break
 		}
 	}
-	return left, right, max, x[left:right]
+	return s, e, max, x[s:e]
 }
