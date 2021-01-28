@@ -8,7 +8,7 @@ package Testing
 @Software: GoLand
 */
 
-// 1.最长公共字串
+// 1.最长子字串
 
 // description: Given a string, find the length of the longest substring without repeating characters.
 
@@ -25,8 +25,8 @@ func lengthOfLongestSubStringBitMap(x string) (int, int, int, string) {
 		return 0, 0, 0, ""
 	}
 	// 定义两个指针left right 和最大值
-	var bitMap [256]bool
-	var left, right, max, start, end int = 0, 0, 0, 0, 0
+	var bitMap [128]bool
+	var left, right, max = 0, 0, 0
 	for right < len(x) {
 		// 如果右指针为true,说明存在该点，置为false，并且左指针++
 		if bitMap[x[right]] {
@@ -42,10 +42,9 @@ func lengthOfLongestSubStringBitMap(x string) (int, int, int, string) {
 		}
 		// 判断是否是越界
 		if right >= len(x) || left+max >= len(x) {
-			end = right
-			start = right - max
+			left = right - max
 			break
 		}
 	}
-	return start, end, max, x[start:end]
+	return left, right, max, x[left:right]
 }

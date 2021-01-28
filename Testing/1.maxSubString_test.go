@@ -14,7 +14,7 @@ import (
 */
 
 func TestLengthOfLongestSubStringBitMap(t *testing.T) {
-	var x = "abcabcbbytrsdfb"
+	var x = "abcabcbbytrsdf"
 	start, end, max, st := lengthOfLongestSubStringBitMap(x)
 	if st != "bytrsdf" {
 		t.Fail()
