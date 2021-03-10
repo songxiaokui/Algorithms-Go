@@ -20,7 +20,7 @@ func TestTwoSliceEqual(t *testing.T) {
 		args args
 		want bool
 	}{
-		{"equal", struct {
+		{"==", struct {
 			l1 []int
 			l2 []int
 		}{l1: []int{1, 2, 3}, l2: []int{1, 2, 3}}, true},
